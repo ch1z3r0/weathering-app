@@ -1,11 +1,15 @@
+import { Routes, Route, Outlet } from 'react-router-dom';
+import Home from './components/home/home.component.jsx';
 import './App.css';
 
-function App() {
+const App = () => {
 	return (
 		<div className='App'>
-			<header className='App-header'></header>
+			<Routes>
+				<Route index path='/' element={<Home />} />
+			</Routes>
 		</div>
 	);
-}
+};
 
 export default App;
