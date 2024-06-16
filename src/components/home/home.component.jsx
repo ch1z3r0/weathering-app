@@ -5,9 +5,13 @@ const Home = () => {
 	return (
 		<div>
 			<div className='container'>
-				<h1>React Weather App</h1>
-				<br />
+				<span>React Weather App</span>
 				<img src={Icon} alt='Weather Icon' />
+				<p>Find weather for your city</p>
+				<form action=''>
+					<input type='search' />
+					<button type='submit'>Search</button>
+				</form>
 			</div>
 		</div>
 	);

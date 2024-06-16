@@ -7,15 +7,17 @@ div {
 
 	.container {
 		display: flex;
-		justify-content: center;
+		flex-direction: column;
+		justify-content: normal;
 		align-items: center;
+		gap: 20px;
 		height: 420px;
 		width: 380px;
 		background-color: #ffffff;
 	}
 }
 
-.img {
+img {
 	width: 100px;
 	height: 100px;
 }
