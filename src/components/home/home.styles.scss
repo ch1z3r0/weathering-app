@@ -8,9 +8,8 @@ div {
 	.container {
 		display: flex;
 		flex-direction: column;
-		justify-content: normal;
+		justify-content: space-around;
 		align-items: center;
-		gap: 20px;
 		height: 420px;
 		width: 380px;
 		background-color: #ffffff;
