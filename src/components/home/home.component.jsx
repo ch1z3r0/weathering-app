@@ -1,18 +1,25 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { WeatherDataContext } from '../../contexts/weather-data.contexts';
+import { useNavigate } from 'react-router-dom';
 
 import './home.styles.scss';
 import Icon from '../../assets/weather-icon.svg';
 
 const Home = () => {
-	const [city, setCity] = useState('');
+	const navigate = useNavigate();
+	const { city, setCity } = useContext(WeatherDataContext);
+	// const { weatherData, fetchWeatherData } = useContext(WeatherDataContext);
 
 	const handleInputChange = (event) => {
 		setCity(event.target.value);
 	};
 
-	const handleSubmit = (event) => {
+	const handleSubmit = async (event) => {
 		event.preventDefault();
-		console.log(city);
+		setCity(city);
+		// console.log(city);
+		// await fetchWeatherData(city);
+		navigate('/weather');
 	};
 
 	return (
@@ -22,7 +29,11 @@ const Home = () => {
 				<img src={Icon} alt='Weather Icon' />
 				<p>Find weather for your city</p>
 				<form onSubmit={handleSubmit}>
-					<input type='search' onChange={handleInputChange} />
+					<input
+						type='search'
+						onChange={handleInputChange}
+						placeholder='City'
+					/>
 					<button type='submit'>Search</button>
 				</form>
 			</div>
