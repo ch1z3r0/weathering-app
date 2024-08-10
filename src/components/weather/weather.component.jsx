@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import { WeatherDataContext } from '../../contexts/weather-data.contexts';
 
 import './weather.styles.scss';
-import Icon from '../../assets/weather-icon.svg';
+import Icon from '../../assets/icons/static/cloudy-3-day.svg';
 
 const Weather = () => {
 	const { weatherData, fetchWeatherData, city } =
@@ -20,11 +20,18 @@ const Weather = () => {
 		var { main, weather } = weatherData;
 	}
 
-	let sunsetTime;
+	let sunsetTime, sunriseTime;
 	if (weatherData) {
-		sunsetTime = new Date(
-			(weatherData.sys.sunset + weatherData.timezone) * 1000
+		sunriseTime = new Date(
+			(weatherData.sys.sunrise - 25200 + weatherData.timezone) * 1000
 		).toLocaleTimeString();
+		sunsetTime = new Date(
+			(weatherData.sys.sunset - 25200 + weatherData.timezone) * 1000
+		).toLocaleTimeString();
+		console.log(
+			weatherData.sys.sunrise,
+			weatherData.sys.sunrise + weatherData.timezone
+		);
 	}
 
 	return (
@@ -38,6 +45,7 @@ const Weather = () => {
 						<div>
 							<span>{main.temp}</span>
 							<span>{weather[0].description}</span>
+							<span>Sunrise at: {sunriseTime}</span>
 							<span>Sunset at: {sunsetTime}</span>
 						</div>
 					)}
